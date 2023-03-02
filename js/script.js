@@ -8,12 +8,12 @@
 // ESERCIZIO 1 Palindroma
 
 // Chiedere all’utente di inserire una parola
-let userWord = document.getElementById('user-word').value;
+let userWord = document.getElementById('user-word');
 let buttonCheck = document.getElementById('user-word-check');
 let paliOutcome = document.getElementById('pali-outcome');
 
 buttonCheck.addEventListener('click', function() {
-    paliOutcome.innerHTML = paliWord(userWord);
+    paliOutcome.innerHTML = paliWord(userWord.value);
 
 })
 // console.log(userWord);
@@ -41,6 +41,8 @@ function paliWord(word) {
     } else {
         return `La parola ${word} non è palindroma`;
     }
+
+
     
 }
 
@@ -55,20 +57,37 @@ function paliWord(word) {
 // Stabiliamo se la somma dei due numeri è pari o dispari(usando una funzione)
 // Dichiariamo chi ha vinto.
 
-let userChoice = document.getElementById('user-choice').value;
-let userNumber = document.getElementById('user-number').value;
+
+// creo variabili per ogni elemento HTML che mi serve manipolare
+let userChoiceBinary = document.getElementById('user-choice-binary');
+let userChoiceNumber = document.getElementById('user-choice-number');
 let numbersButton = document.getElementById('generate-numbers');
 let pcNumber = document.getElementById('pc-number');
+let userNumber = document.getElementById('user-number');
+let numbersSum = document.getElementById('numbers-sum');
+let finalResults = document.getElementById('final-results');
 
-// let sum = 
+let sum = userChoiceNumber + pcNumber.value;
+
 let min = 0;
 let max = 5;
 
 numbersButton.addEventListener('click', function() {
-    pcNumber.innerHTML = pcRandomNumber(min, max);
+    console.log(userChoiceNumber);
+    userNumber.innerHTML = `Il numero scelto dall'utente è: ${userChoiceNumber}`;
+    pcNumber.innerHTML = `Il numero scelto dal computer è: ${pcRandomNumber(min, max)}`;
+    let sum = userChoiceNumber + pcNumber.value;
+    console.log(sum);
+    // while (sum % 2 == 0 && userChoiceBinary == 'Pari') {
+    //     finalResults.innerHTML = 'Hai vinto!';
+    // }
 })
+
 // creo funzione per generare numero random da 1 a 5
 function pcRandomNumber(min, max) {
     let randomNumber = Math.floor(Math.random() * (max - min) + 1);
-    return `Il numero scelto dal computer è: ${randomNumber}`;
+    return randomNumber;
 }
+
+
+
