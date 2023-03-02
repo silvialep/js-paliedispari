@@ -7,7 +7,31 @@
     <title>Pali e dispari</title>
 </head>
 <body>
-    
+    <div>
+        <label for="user-word">Inserisci una parola</label>
+        <input type="text" id="user-word" value="">
+        <button id="user-word-check">Verifica</button>
+        <div id="pali-outcome"></div>
+    </div>
+
+    <hr>
+
+    <div>
+        <label for="user-choice">Scegli pari o dispari</label>
+        <select id="user-choice" value="">
+            <option value="even">Pari</option>
+            <option value="odd">Dispari</option>
+        </select>
+        <label for="user-number">Scegli un numero da 1 a 5</label>
+        <input type="text" id="user-number">
+        <button id="generate-numbers">Gioca</button>
+    </div>
+    <div>
+        <div id="pc-number"></div>
+        <div id="numbers-sum"></div>
+
+
+    </div>
 
 
     <script src="js/script.js"></script>
