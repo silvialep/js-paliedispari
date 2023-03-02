@@ -23,26 +23,28 @@ function paliWord(word) {
     // debugger;
     // console.log(userWord);
 
-    // creo variabile per dividere gli elementi della stringa
-    let wordSplit = word.split('');
-    // console.log(wordSplit);
-
-    // creo variabile per invertire gli elementi della stringa
-    let newWord = wordSplit.reverse();
-    // console.log(word);
-
-    // creo variabile per riunire gli elementi della nuova stringa invertita
-    let inverseWord = newWord.join('');
-    // console.log(inverseWord);
-
-    // verifico che le due parole siano uguali e stampo a console il risultato
-    if(word == inverseWord) {
-        return `La parola ${word} è palindroma`;
+    if (!isNaN(word) || word == '' || word.length < 2) {
+        return `Inserisci una parola valida`;
     } else {
-        return `La parola ${word} non è palindroma`;
+        // creo variabile per dividere gli elementi della stringa
+        let wordSplit = word.split('');
+        // console.log(wordSplit);
+    
+        // creo variabile per invertire gli elementi della stringa
+        let newWord = wordSplit.reverse();
+        // console.log(word);
+    
+        // creo variabile per riunire gli elementi della nuova stringa invertita
+        let inverseWord = newWord.join('');
+        // console.log(inverseWord);
+    
+        // verifico che le due parole siano uguali e stampo a console il risultato
+        if(word == inverseWord) {
+            return `La parola ${word} è palindroma`;
+        } else {
+            return `La parola ${word} non è palindroma`;
+        }
     }
-
-
     
 }
 
