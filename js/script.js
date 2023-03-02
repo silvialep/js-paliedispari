@@ -12,9 +12,9 @@ let userWord = document.getElementById('user-word');
 let buttonCheck = document.getElementById('user-word-check');
 let paliOutcome = document.getElementById('pali-outcome');
 
+// creo l'evento al click del bottone
 buttonCheck.addEventListener('click', function() {
     paliOutcome.innerHTML = paliWord(userWord.value);
-
 })
 // console.log(userWord);
 
@@ -23,6 +23,7 @@ function paliWord(word) {
     // debugger;
     // console.log(userWord);
 
+    // controllo che la parola inserita sia valida ai fini del gioco
     if (!isNaN(word) || word == '' || word.length < 2) {
         return `Inserisci una parola valida`;
     } else {
@@ -45,7 +46,6 @@ function paliWord(word) {
             return `La parola ${word} non è palindroma`;
         }
     }
-    
 }
 
 
@@ -69,26 +69,49 @@ let userNumber = document.getElementById('user-number');
 let numbersSum = document.getElementById('numbers-sum');
 let finalResults = document.getElementById('final-results');
 
-let sum = userChoiceNumber + pcNumber.value;
 
+// creo le variabili per la funzione del numero random
 let min = 0;
 let max = 5;
 
+// creo l'evento al click del button
 numbersButton.addEventListener('click', function() {
-    console.log(userChoiceNumber);
-    userNumber.innerHTML = `Il numero scelto dall'utente è: ${userChoiceNumber}`;
-    pcNumber.innerHTML = `Il numero scelto dal computer è: ${pcRandomNumber(min, max)}`;
-    let sum = userChoiceNumber + pcNumber.value;
+    // console.log(userChoiceNumber.value);
+
+    // visualizzo in HTML i due numeri scelti dall'utente e dalla funzione
+    let pcNumberRandom = pcRandomNumber(min, max);
+    userNumber.innerHTML = `Il numero scelto dall'utente è: ${userChoiceNumber.value}`;
+    pcNumber.innerHTML = `Il numero scelto dal computer è: ${pcNumberRandom}`;
+
+    // creo la variabile somma
+    let sum = parseInt(userChoiceNumber.value) + pcNumberRandom;
     console.log(sum);
-    // while (sum % 2 == 0 && userChoiceBinary == 'Pari') {
-    //     finalResults.innerHTML = 'Hai vinto!';
-    // }
+
+    let finalSum = sumEvenOrOdd(sum);
+    numbersSum.innerHTML = `La somma dei due numeri è: ${finalSum}`;
+
+    if (userChoiceBinary == finalSum) {
+        finalResults.innerHTML = `Complimenti, hai vinto!`;
+    } else {
+        finalResults.innerHTML = `Ritenta, sarai più fortunato`;
+    }
+
+    
 })
+
 
 // creo funzione per generare numero random da 1 a 5
 function pcRandomNumber(min, max) {
     let randomNumber = Math.floor(Math.random() * (max - min) + 1);
     return randomNumber;
+}
+
+function sumEvenOrOdd(number) {
+    if(number % 2 == 0) {
+        return 'Pari';
+    } else {
+        return 'Dispari';
+    }
 }
 
 
