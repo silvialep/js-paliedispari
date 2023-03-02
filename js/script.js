@@ -90,11 +90,14 @@ numbersButton.addEventListener('click', function() {
     let finalSum = sumEvenOrOdd(sum);
     numbersSum.innerHTML = `La somma dei due numeri è: ${finalSum}`;
 
-    if (userChoiceBinary == finalSum) {
+    if (userChoiceBinary.value == 'even' && finalSum == 'pari') {
+        finalResults.innerHTML = `Complimenti, hai vinto!`;
+    } else if (userChoiceBinary.value == 'odd' && finalSum == 'dispari') {
         finalResults.innerHTML = `Complimenti, hai vinto!`;
     } else {
         finalResults.innerHTML = `Ritenta, sarai più fortunato`;
     }
+
 
     
 })
@@ -108,9 +111,9 @@ function pcRandomNumber(min, max) {
 
 function sumEvenOrOdd(number) {
     if(number % 2 == 0) {
-        return 'Pari';
+        return 'pari';
     } else {
-        return 'Dispari';
+        return 'dispari';
     }
 }
 
