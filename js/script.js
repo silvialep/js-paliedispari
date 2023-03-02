@@ -71,6 +71,7 @@ let finalResults = document.getElementById('final-results');
 
 
 // creo le variabili per la funzione del numero random
+let min = 0;
 let max = 5;
 
 // creo l'evento al click del button
@@ -91,9 +92,11 @@ numbersButton.addEventListener('click', function() {
         let sum = parseInt(userChoiceNumber.value) + pcNumberRandom;
         // console.log(sum);
         
+        // creo la variabile per la somma finale
         let finalSum = sumEvenOrOdd(sum);
         numbersSum.innerHTML = `La somma dei due numeri è: ${finalSum}`;
         
+        // creo i controlli per l'esito finale da visualizzare in pagina
         if (userChoiceBinary.value == 'even' && finalSum == 'pari') {
             finalResults.innerHTML = `Complimenti, hai vinto!`;
         } else if (userChoiceBinary.value == 'odd' && finalSum == 'dispari') {
@@ -110,10 +113,12 @@ numbersButton.addEventListener('click', function() {
 
 // creo funzione per generare numero random da 1 a 5
 function pcRandomNumber(min, max) {
-    let randomNumber = Math.floor(Math.random() * max + 1);
+    let randomNumber = Math.floor(Math.random() * (max - min) + 1);
     return randomNumber;
 }
 
+
+// creo funzione per controllare se la somma è pari o dispari
 function sumEvenOrOdd(number) {
     if(number % 2 == 0) {
         return 'pari';
