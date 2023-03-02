@@ -78,26 +78,32 @@ let max = 5;
 numbersButton.addEventListener('click', function() {
     // console.log(userChoiceNumber.value);
 
-    // visualizzo in HTML i due numeri scelti dall'utente e dalla funzione
-    let pcNumberRandom = pcRandomNumber(min, max);
-    userNumber.innerHTML = `Il numero scelto dall'utente è: ${userChoiceNumber.value}`;
-    pcNumber.innerHTML = `Il numero scelto dal computer è: ${pcNumberRandom}`;
-
-    // creo la variabile somma
-    let sum = parseInt(userChoiceNumber.value) + pcNumberRandom;
-    console.log(sum);
-
-    let finalSum = sumEvenOrOdd(sum);
-    numbersSum.innerHTML = `La somma dei due numeri è: ${finalSum}`;
-
-    if (userChoiceBinary.value == 'even' && finalSum == 'pari') {
-        finalResults.innerHTML = `Complimenti, hai vinto!`;
-    } else if (userChoiceBinary.value == 'odd' && finalSum == 'dispari') {
-        finalResults.innerHTML = `Complimenti, hai vinto!`;
+    // controllo che il numero inserito dall'utente sia valido
+    if (userChoiceNumber.value > 5 || userChoiceNumber.value < 1 || isNaN(userChoiceNumber.value)) {
+        finalResults.innerHTML = `Per favore inserisci un numero da 1 a 5`;
     } else {
-        finalResults.innerHTML = `Ritenta, sarai più fortunato`;
-    }
 
+        // visualizzo in HTML i due numeri scelti dall'utente e dalla funzione
+        let pcNumberRandom = pcRandomNumber(min, max);
+        userNumber.innerHTML = `Il numero scelto dall'utente è: ${userChoiceNumber.value}`;
+        pcNumber.innerHTML = `Il numero scelto dal computer è: ${pcNumberRandom}`;
+        
+        // creo la variabile somma
+        let sum = parseInt(userChoiceNumber.value) + pcNumberRandom;
+        // console.log(sum);
+        
+        let finalSum = sumEvenOrOdd(sum);
+        numbersSum.innerHTML = `La somma dei due numeri è: ${finalSum}`;
+        
+        if (userChoiceBinary.value == 'even' && finalSum == 'pari') {
+            finalResults.innerHTML = `Complimenti, hai vinto!`;
+        } else if (userChoiceBinary.value == 'odd' && finalSum == 'dispari') {
+            finalResults.innerHTML = `Complimenti, hai vinto!`;
+        } else {
+            finalResults.innerHTML = `Ritenta, sarai più fortunato`;
+        }
+        
+    }
 
     
 })
