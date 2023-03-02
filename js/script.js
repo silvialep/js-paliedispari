@@ -71,7 +71,6 @@ let finalResults = document.getElementById('final-results');
 
 
 // creo le variabili per la funzione del numero random
-let min = 0;
 let max = 5;
 
 // creo l'evento al click del button
@@ -111,7 +110,7 @@ numbersButton.addEventListener('click', function() {
 
 // creo funzione per generare numero random da 1 a 5
 function pcRandomNumber(min, max) {
-    let randomNumber = Math.floor(Math.random() * (max - min) + 1);
+    let randomNumber = Math.floor(Math.random() * max + 1);
     return randomNumber;
 }
 
